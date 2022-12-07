@@ -2,6 +2,7 @@ package com.example.booklibrary.service;
 
 import com.example.booklibrary.model.Book;
 import com.example.booklibrary.repo.BookRepo;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
