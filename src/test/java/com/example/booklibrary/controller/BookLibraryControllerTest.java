@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -13,6 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class BookLibraryControllerTest {
 
     // Integrations Tests
@@ -48,30 +50,18 @@ class BookLibraryControllerTest {
         //GIVEN
         String requestBody = """
                     {
-                    "isbn": 11111,
+                    "isbn": 123456,
                     "title":"Der Steppenwolf",
                     "autor":"Johann Wolfgang von Goethe"
                     }
                 """;
 
-        String expectedJSON = """
-            [
-                {
-                    "isbn": 12314,
-                    "title": "Harry Potter",
-                    "autor": "J.K"
-                },
-                {
-                    "isbn": 12345,
-                    "title": "Faust",
-                    "autor": "Johann Wolfgang von Goethe"
-                },
+        String expectedJSON = """           
                 {
                     "isbn": 123456,
                     "title": "Der Steppenwolf",
                     "autor": "Johann Wolfgang von Goethe"
                 }
-            ]
             """;
 
 

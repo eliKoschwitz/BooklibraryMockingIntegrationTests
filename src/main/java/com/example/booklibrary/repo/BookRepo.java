@@ -35,7 +35,7 @@ public class BookRepo {
         throw new NoSuchElementException("Book is not in lib");
     }
 
-    public void safeBookRepo(int isbn, Book book) {
+    public Book safeBookRepo(int isbn, Book book) {
         boolean flag = true;
         for (Book currentBook : books) {
             if (currentBook.getIsbn() == isbn) {
@@ -47,16 +47,20 @@ public class BookRepo {
         }
         if (flag == true) {
             books.add(book);
+            return book;
         }
+        return null;
     }
 
-    public void deleteBookRepo(int isbn){
+    public boolean deleteBookRepo(int isbn){
         for (Book currentBook : books) {
             if (currentBook.getIsbn() == isbn) {
-                books.remove(currentBook);
+                return books.remove(currentBook);
             }
             throw new NoSuchElementException("Book is not in the Lib");
+
         }
+        return false;
     }
 }
 

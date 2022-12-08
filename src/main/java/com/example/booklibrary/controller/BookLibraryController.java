@@ -26,15 +26,15 @@ public class BookLibraryController {
     }
 
     @PutMapping("/books/{isbn}")
-    public List<Book> safeBook (@PathVariable int isbn, @RequestBody Book book){
-        bookLibraryService.safeBooksService(isbn,book);
-        return bookLibraryService.getBooksFromService();
+    public Book safeBook (@PathVariable int isbn, @RequestBody Book book){
+        return bookLibraryService.safeBooksService(isbn,book);
+
     }
 
     @DeleteMapping("/books/{isbn}")
-    public List<Book> deleteBook(@PathVariable int isbn){
-        bookLibraryService.deleteBookService(isbn);
-        return bookLibraryService.getBooksFromService();
+    public boolean deleteBook(@PathVariable int isbn){
+       return bookLibraryService.deleteBookService(isbn);
+
     }
 
 }

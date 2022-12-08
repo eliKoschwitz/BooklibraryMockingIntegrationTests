@@ -23,12 +23,12 @@ public class BookLibraryService {
         return bookRepo.getBookFromRepoByIsbn(isbn);
     }
 
-    public void safeBooksService(int isbn, Book book){
-        bookRepo.safeBookRepo(isbn, book);
+    public Book safeBooksService(int isbn, Book book){
+       return bookRepo.safeBookRepo(isbn, book);
     }
 
-    public void deleteBookService(int isbn){
-        bookRepo.deleteBookRepo(isbn);
+    public boolean deleteBookService(int isbn){
+       return bookRepo.deleteBookRepo(isbn);
     }
 }
 
