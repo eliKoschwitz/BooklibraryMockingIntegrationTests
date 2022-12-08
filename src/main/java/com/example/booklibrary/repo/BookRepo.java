@@ -52,15 +52,16 @@ public class BookRepo {
         return null;
     }
 
-    public boolean deleteBookRepo(int isbn){
+    public Book deleteBookRepo(int isbn){
         for (Book currentBook : books) {
             if (currentBook.getIsbn() == isbn) {
-                return books.remove(currentBook);
+                 books.remove(currentBook);
+                 return currentBook;
             }
             throw new NoSuchElementException("Book is not in the Lib");
 
         }
-        return false;
+        return null;
     }
 }
 

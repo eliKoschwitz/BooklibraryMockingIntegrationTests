@@ -72,4 +72,37 @@ class BookLibraryControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedJSON));
     }
+
+    @Test
+    void delete_ShouldReturnTrue_AndRemoveBook() throws Exception {
+        //GIVEN
+        int isbn = 12314;
+
+        String expectedJSON = """           
+                        {
+                            "isbn": 12314,
+                            "title": "Harry Potter",
+                            "autor": "J.K"
+                        }
+            """;
+
+
+        //WHEN & THEN
+        mvc.perform(MockMvcRequestBuilders.delete("/myapi/books/"+isbn))
+                .andExpect(status().isOk())
+                .andExpect(content().json(expectedJSON));
+
+        //Extra Test to check if it was deleted
+        mvc.perform(MockMvcRequestBuilders.get("/myapi/books"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                   [
+                        {
+                            "isbn": 12345,
+                            "title": "Book of Eli",
+                            "autor": "Jesus"
+                        }
+                    ]
+                    """));
+    }
 }

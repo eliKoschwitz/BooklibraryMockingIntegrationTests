@@ -27,7 +27,7 @@ public class BookLibraryService {
        return bookRepo.safeBookRepo(isbn, book);
     }
 
-    public boolean deleteBookService(int isbn){
+    public Book deleteBookService(int isbn){
        return bookRepo.deleteBookRepo(isbn);
     }
 }

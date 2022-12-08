@@ -32,7 +32,7 @@ public class BookLibraryController {
     }
 
     @DeleteMapping("/books/{isbn}")
-    public boolean deleteBook(@PathVariable int isbn){
+    public Book deleteBook(@PathVariable int isbn){
        return bookLibraryService.deleteBookService(isbn);
 
     }
